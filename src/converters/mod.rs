@@ -8,11 +8,14 @@ use std::path::PathBuf;
 pub enum ConversionStatus {
     Idle,
     Processing(String),
+    #[allow(dead_code)]
     Success(usize),
+    #[allow(dead_code)]
     Error(String),
     Completed { success: usize, failures: usize },
 }
 
+#[allow(dead_code)]
 pub trait Converter {
     fn process(&self, input_files: &[PathBuf], output_folder: &PathBuf, options: &ConversionOptions) -> ConversionStatus;
 }

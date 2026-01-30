@@ -46,7 +46,7 @@ impl ConverterApp {
     fn render_menu(&mut self, ui: &mut egui::Ui) {
         ui.vertical_centered(|ui| {
             ui.add_space(40.0);
-            ui.heading(egui::RichText::new("🔄 UNIVERSAL CONVERTER").size(36.0).strong().color(egui::Color32::from_rgb(100, 200, 255)));
+            ui.heading(egui::RichText::new("🔄 FILE CONVERTER").size(36.0).strong().color(egui::Color32::from_rgb(100, 200, 255)));
             ui.add_space(10.0);
             ui.label(egui::RichText::new("Fast & Secure File Conversion").size(16.0).italics().color(egui::Color32::LIGHT_GRAY));
             ui.add_space(50.0);
