@@ -61,7 +61,14 @@ For all features to work, you must install the following external tools on your 
     ```bash
     cargo build --release
     ```
-    The executable will be located in `target/release/universal_converter.exe`.
+    The executable will be located in `target/release/file_converter.exe`.
+
+Or
+
+Run:
+```bash
+File_Converter_V1.0.0.exe
+```
 
 ---
 
