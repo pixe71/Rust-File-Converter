@@ -1,5 +1,7 @@
 # Rust File Converter
 
+<img src="icon.png" align="right" width="100px" alt="icon">
+
 A fast, secure, and universal file converter, built with **Rust** featuring a modern graphical interface.
 
 ![Rust](https://img.shields.io/badge/Made_with-Rust-orange?style=for-the-badge&logo=rust)
