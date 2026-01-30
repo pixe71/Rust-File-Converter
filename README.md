@@ -1,4 +1,4 @@
-# Rust File Converter
+# <img src="icon.png" align="" width="25px" alt="icon"> Rust File Converter
 
 A fast, secure, and universal file converter, built with **Rust** featuring a modern graphical interface.
 
@@ -6,7 +6,6 @@ A fast, secure, and universal file converter, built with **Rust** featuring a mo
 ![GUI](https://img.shields.io/badge/GUI-egui-blue?style=for-the-badge)
 
 <img src="screen.png" width="300px" alt="screen">
-<img src="icon.png" align="" width="343px" alt="icon">
 
 ## Features
 
