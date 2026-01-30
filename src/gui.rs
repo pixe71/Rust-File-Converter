@@ -54,15 +54,17 @@ impl ConverterApp {
              // Center the header
             ui.vertical_centered(|ui| {
                 ui.add_space(50.0);
-                ui.heading(egui::RichText::new("🔄 FILE CONVERTER").size(40.0).strong().color(egui::Color32::from_rgb(100, 200, 255)));
-                ui.label(egui::RichText::new("Universal File Transformation Tool").size(14.0).color(egui::Color32::from_gray(180)));
+                ui.heading(egui::RichText::new("FILE CONVERTER").size(40.0).strong().color(egui::Color32::from_rgb(100, 200, 255)));
+                ui.label(egui::RichText::new("By pixe71").size(14.0).color(egui::Color32::from_gray(180)));
                 ui.add_space(40.0);
             });
 
             let btn_size = egui::vec2(300.0, 80.0);
             
+            // --- CORRECTION ICI ---
             // Helper for card-like buttons
             let mut mk_card = |ui: &mut egui::Ui, title: &str, icon: &str, desc: &str, color: egui::Color32| -> bool {
+                // 1. On alloue l'espace et on demande la détection de clic sur tout le rectangle
                 let (rect, response) = ui.allocate_exact_size(btn_size, egui::Sense::click());
                 
                 let visuals = ui.style().interact(&response);
@@ -77,6 +79,10 @@ impl ConverterApp {
 
                  // Left-aligned content with icon
                  ui.allocate_ui_at_rect(rect, |ui| {
+                     // 2. CRITICAL FIX: On désactive la sélection de texte.
+                     // Cela permet aux clics de traverser le texte et d'atteindre le bouton (rect) en dessous.
+                     ui.style_mut().interaction.selectable_labels = false;
+
                      ui.horizontal_centered(|ui| {
                          ui.add_space(20.0);
                          ui.label(egui::RichText::new(icon).size(30.0));
@@ -89,6 +95,7 @@ impl ConverterApp {
                      });
                  });
 
+                // On retourne le clic détecté sur le rectangle global
                 response.on_hover_text(desc).clicked()
             };
 
@@ -119,7 +126,7 @@ impl ConverterApp {
             // Footer
             ui.vertical_centered(|ui| {
                 ui.add_space(40.0);
-                ui.label(egui::RichText::new("v1.0.0 • Rust Powered").size(10.0).color(egui::Color32::from_gray(100)));
+                ui.label(egui::RichText::new("v1.0.0").size(10.0).color(egui::Color32::from_gray(100)));
             });
         });
     }
@@ -129,36 +136,36 @@ impl ConverterApp {
            .resizable(false)
            .default_width(200.0)
            .show_inside(ui, |ui| {
-                ui.vertical_centered(|ui| {
-                    ui.add_space(20.0);
-                    if ui.add(egui::Button::new(egui::RichText::new("⬅ MENU").strong()).min_size(egui::vec2(150.0, 40.0))).clicked() {
-                        self.state = AppState::Menu;
-                        self.files.clear();
-                        *self.status.lock().unwrap() = ConversionStatus::Idle;
-                    }
-                    ui.add_space(20.0);
-                    ui.separator();
-                    ui.add_space(20.0);
-                    ui.heading(egui::RichText::new("Settings").size(18.0));
-                    ui.add_space(10.0);
-                    
-                    egui::Grid::new("side_settings").spacing([10.0, 15.0]).show(ui, |ui| {
-                        ui.label("Format:");
-                        egui::ComboBox::from_id_salt("format_box")
-                            .selected_text(&self.options.format)
-                            .width(80.0)
-                            .show_ui(ui, |ui| {
-                                for fmt in formats {
-                                    ui.selectable_value(&mut self.options.format, fmt.to_string(), *fmt);
-                                }
-                            });
-                        ui.end_row();
+               ui.vertical_centered(|ui| {
+                   ui.add_space(20.0);
+                   if ui.add(egui::Button::new(egui::RichText::new("⬅ MENU").strong()).min_size(egui::vec2(150.0, 40.0))).clicked() {
+                       self.state = AppState::Menu;
+                       self.files.clear();
+                       *self.status.lock().unwrap() = ConversionStatus::Idle;
+                   }
+                   ui.add_space(20.0);
+                   ui.separator();
+                   ui.add_space(20.0);
+                   ui.heading(egui::RichText::new("Settings").size(18.0));
+                   ui.add_space(10.0);
+                   
+                   egui::Grid::new("side_settings").spacing([10.0, 15.0]).show(ui, |ui| {
+                       ui.label("Format:");
+                       egui::ComboBox::from_id_salt("format_box")
+                           .selected_text(&self.options.format)
+                           .width(80.0)
+                           .show_ui(ui, |ui| {
+                               for fmt in formats {
+                                   ui.selectable_value(&mut self.options.format, fmt.to_string(), *fmt);
+                               }
+                           });
+                       ui.end_row();
 
-                        match self.state {
-                            AppState::Images => {
-                                // Quality slider removed as requested
-                            },
-                             AppState::Audio => {
+                       match self.state {
+                           AppState::Images => {
+                               // Quality slider removed as requested
+                           },
+                            AppState::Audio => {
                                  ui.label("Bitrate:");
                                  egui::ComboBox::from_id_salt("bitrate_box")
                                     .selected_text(&self.options.bitrate)
@@ -189,49 +196,49 @@ impl ConverterApp {
            });
 
        egui::CentralPanel::default().show_inside(ui, |ui| {
-            ui.vertical_centered(|ui| {
-                ui.add_space(20.0);
-                ui.heading(egui::RichText::new(title).size(28.0).strong().color(egui::Color32::from_rgb(100, 200, 255)));
-                ui.add_space(20.0);
-            });
+           ui.vertical_centered(|ui| {
+               ui.add_space(20.0);
+               ui.heading(egui::RichText::new(title).size(28.0).strong().color(egui::Color32::from_rgb(100, 200, 255)));
+               ui.add_space(20.0);
+           });
 
-            // File Selection Area
-            let frame = egui::Frame::group(ui.style())
-                .rounding(egui::Rounding::same(8.0))
-                .inner_margin(20.0);
-            
-            frame.show(ui, |ui| {
-                 ui.set_min_width(ui.available_width());
-                 ui.horizontal(|ui| {
-                    ui.label(egui::RichText::new("Selected Files").strong().size(16.0));
-                    ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
-                        if ui.add(egui::Button::new("➕ Add Files").min_size(egui::vec2(100.0, 30.0))).clicked() {
-                            let mut dialog = FileDialog::new();
-                            match self.state {
-                                AppState::Images => dialog = dialog.add_filter("Images", &["png", "jpg", "jpeg", "bmp", "gif", "webp", "ico"]),
-                                AppState::Audio => dialog = dialog.add_filter("Audio", &["mp3", "wav", "ogg", "flac", "m4a", "aac"]),
-                                AppState::Video => dialog = dialog.add_filter("Video", &["mp4", "avi", "mkv", "mov", "webm"]),
-                                AppState::Documents => dialog = dialog.add_filter("Documents", &["pdf", "docx", "txt"]),
-                                _ => {}
-                            }
-                            
-                            if let Some(paths) = dialog.pick_files() {
-                                self.files.extend(paths); // changed to extend to append instead of replace
-                            }
-                        }
-                        if !self.files.is_empty() {
-                            if ui.button("🗑 Clear All").clicked() {
-                                self.files.clear();
-                            }
-                        }
-                    });
-                 });
-                 
-                 ui.add_space(10.0);
-                 ui.separator();
-                 ui.add_space(10.0);
+           // File Selection Area
+           let frame = egui::Frame::group(ui.style())
+               .rounding(egui::Rounding::same(8.0))
+               .inner_margin(20.0);
+           
+           frame.show(ui, |ui| {
+                ui.set_min_width(ui.available_width());
+                ui.horizontal(|ui| {
+                   ui.label(egui::RichText::new("Selected Files").strong().size(16.0));
+                   ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                       if ui.add(egui::Button::new("➕ Add Files").min_size(egui::vec2(100.0, 30.0))).clicked() {
+                           let mut dialog = FileDialog::new();
+                           match self.state {
+                               AppState::Images => dialog = dialog.add_filter("Images", &["png", "jpg", "jpeg", "bmp", "gif", "webp", "ico"]),
+                               AppState::Audio => dialog = dialog.add_filter("Audio", &["mp3", "wav", "ogg", "flac", "m4a", "aac"]),
+                               AppState::Video => dialog = dialog.add_filter("Video", &["mp4", "avi", "mkv", "mov", "webm"]),
+                               AppState::Documents => dialog = dialog.add_filter("Documents", &["pdf", "docx", "txt"]),
+                               _ => {}
+                           }
+                           
+                           if let Some(paths) = dialog.pick_files() {
+                               self.files.extend(paths);
+                           }
+                       }
+                       if !self.files.is_empty() {
+                           if ui.button("🗑 Clear All").clicked() {
+                               self.files.clear();
+                           }
+                       }
+                   });
+                });
+                
+                ui.add_space(10.0);
+                ui.separator();
+                ui.add_space(10.0);
 
-                 egui::ScrollArea::vertical().min_scrolled_height(200.0).max_height(250.0).id_salt("file_scroll").show(ui, |ui| {
+                egui::ScrollArea::vertical().min_scrolled_height(200.0).max_height(250.0).id_salt("file_scroll").show(ui, |ui| {
                       if self.files.is_empty() {
                           ui.vertical_centered(|ui| {
                               ui.add_space(40.0);
@@ -251,49 +258,49 @@ impl ConverterApp {
                  });
             });
 
-            ui.add_space(20.0);
+           ui.add_space(20.0);
 
-            // Status & Action Area
-            let status = self.status.lock().unwrap().clone();
-            
-            ui.vertical_centered(|ui| {
-                match &status {
-                    ConversionStatus::Processing(current) => {
-                        ui.add_space(10.0);
-                        ui.spinner();
-                        ui.label(egui::RichText::new("Converting...").strong().size(16.0));
-                        ui.label(format!("Current file: {}", current));
-                    },
-                    ConversionStatus::Idle | ConversionStatus::Success(_) | ConversionStatus::Error(_) | ConversionStatus::Completed {..} => {
-                        let btn = egui::Button::new(egui::RichText::new("🚀 START CONVERSION").size(20.0).strong())
-                            .min_size(egui::vec2(250.0, 60.0))
-                            .rounding(10.0);
-                        
-                        let btn = if self.files.is_empty() {
-                            btn
-                        } else {
-                            btn.fill(egui::Color32::from_rgb(0, 120, 215)) // Windows blue accent
-                        };
-                            
-                        if ui.add_enabled(!self.files.is_empty(), btn).clicked() {
-                             self.start_conversion();
-                        }
-                    }
-                }
+           // Status & Action Area
+           let status = self.status.lock().unwrap().clone();
+           
+           ui.vertical_centered(|ui| {
+               match &status {
+                   ConversionStatus::Processing(current) => {
+                       ui.add_space(10.0);
+                       ui.spinner();
+                       ui.label(egui::RichText::new("Converting...").strong().size(16.0));
+                       ui.label(format!("Current file: {}", current));
+                   },
+                   ConversionStatus::Idle | ConversionStatus::Success(_) | ConversionStatus::Error(_) | ConversionStatus::Completed {..} => {
+                       let btn = egui::Button::new(egui::RichText::new("🚀 START CONVERSION").size(20.0).strong())
+                           .min_size(egui::vec2(250.0, 60.0))
+                           .rounding(10.0);
+                       
+                       let btn = if self.files.is_empty() {
+                           btn
+                       } else {
+                           btn.fill(egui::Color32::from_rgb(0, 120, 215)) // Windows blue accent
+                       };
+                           
+                       if ui.add_enabled(!self.files.is_empty(), btn).clicked() {
+                            self.start_conversion();
+                       }
+                   }
+               }
 
-                ui.add_space(15.0);
+               ui.add_space(15.0);
 
-                match status {
-                    ConversionStatus::Completed { success, failures } => {
-                         let color = if failures == 0 { egui::Color32::GREEN } else { egui::Color32::YELLOW };
-                         ui.label(egui::RichText::new(format!("✔ All Done! {} Success, {} Failures", success, failures)).size(18.0).strong().color(color));
-                    },
-                    ConversionStatus::Error(e) => {
-                        ui.label(egui::RichText::new(format!("❌ Error: {}", e)).size(16.0).color(egui::Color32::RED));
-                    },
-                    _ => {}
-                }
-            });
+               match status {
+                   ConversionStatus::Completed { success, failures } => {
+                        let color = if failures == 0 { egui::Color32::GREEN } else { egui::Color32::YELLOW };
+                        ui.label(egui::RichText::new(format!("✔ All Done! {} Success, {} Failures", success, failures)).size(18.0).strong().color(color));
+                   },
+                   ConversionStatus::Error(e) => {
+                       ui.label(egui::RichText::new(format!("❌ Error: {}", e)).size(16.0).color(egui::Color32::RED));
+                   },
+                   _ => {}
+               }
+           });
        });
     }
 
@@ -359,7 +366,7 @@ impl eframe::App for ConverterApp {
         egui::CentralPanel::default().show(ctx, |ui| {
             match self.state {
                 AppState::Menu => self.render_menu(ui),
-                AppState::Images => self.render_converter_ui(ui, "🖼️ Image Converter", &["jpg", "png", "bmp", "gif", "ico", "webp"]),
+                AppState::Images => self.render_converter_ui(ui, "🖼 Image Converter", &["jpg", "png", "bmp", "gif", "ico", "webp"]),
                 AppState::Documents => self.render_converter_ui(ui, "📄 Document Converter", &["pdf", "txt", "docx"]),
                 AppState::Audio => self.render_converter_ui(ui, "🎵 Audio Converter", &["mp3", "wav", "ogg", "flac", "aac"]),
                 AppState::Video => self.render_converter_ui(ui, "🎬 Video Converter", &["mp4", "mkv", "avi", "mov"]),
