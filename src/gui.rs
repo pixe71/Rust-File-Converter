@@ -96,7 +96,7 @@ impl ConverterApp {
             
             // Single column vertical layout
             ui.vertical_centered(|ui| {
-                if mk_card(ui, "IMAGES", "🖼️", "Convert JPG, PNG, WEBP...", egui::Color32::from_rgb(255, 100, 100)) {
+                if mk_card(ui, "IMAGES", "🖼", "Convert JPG, PNG, WEBP...", egui::Color32::from_rgb(255, 100, 100)) {
                     self.to_state(AppState::Images, "jpg");
                 }
                 ui.add_space(15.0);
