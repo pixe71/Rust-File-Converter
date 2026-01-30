@@ -12,7 +12,7 @@ A fast, secure, and universal file converter, built with **Rust** featuring a mo
 Bulk file conversion via a simple drag-and-drop or file selection interface.
 
 ### Images (Native - No dependencies)
-Image conversion with quality control.
+Image conversion.
 - **Supported formats:** `JPG`, `PNG`, `BMP`, `GIF`, `WEBP`, `ICO`
 
 ### Audio (Requires FFmpeg)
