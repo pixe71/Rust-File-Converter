@@ -11,7 +11,8 @@ fn main() -> eframe::Result<()> {
     let native_options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([700.0, 650.0])
-            .with_min_inner_size([600.0, 500.0])
+            .with_resizable(false)
+            .with_maximize_button(false)
             .with_title("🔄 File Converter Pro (Rust)"),
         ..Default::default()
     };
