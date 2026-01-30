@@ -16,11 +16,11 @@ Image conversion with quality control.
 - **Supported formats:** `JPG`, `PNG`, `BMP`, `GIF`, `WEBP`, `ICO`
 
 ### Audio (Requires FFmpeg)
-Audio conversion with bitrate selection (64k to 320k).
+Audio conversion with bitrate selection.
 - **Supported formats:** `MP3`, `WAV`, `OGG`, `FLAC`, `AAC`
 
 ### Video (Requires FFmpeg)
-Video conversion with codec selection (H.264, H.265) and resizing.
+Video conversion with codec selection.
 - **Supported formats:** `MP4`, `MKV`, `AVI`, `MOV`
 
 ### Documents (Requires Pandoc)
