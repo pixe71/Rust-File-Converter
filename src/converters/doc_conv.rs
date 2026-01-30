@@ -26,10 +26,7 @@ pub fn convert_doc(input_path: &PathBuf, output_folder: &PathBuf, options: &Conv
        .arg("-o")
        .arg(&output_path);
 
-    // Basic options mapping
     if options.format == "pdf" {
-        // PDF requires a PDF engine usually, pandoc defaults work well often but explicit is safer if needed.
-        // For now we rely on default pdflatex or wkhtmltopdf if installed.
     }
 
     let output = cmd.output().context("Failed to execute pandoc")?;

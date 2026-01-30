@@ -49,7 +49,6 @@ impl ConverterApp {
     }
 
     fn render_menu(&mut self, ui: &mut egui::Ui) {
-        // Use standard vertical layout first to avoid double-centering issues
         ui.vertical(|ui| {
              // Center the header
             ui.vertical_centered(|ui| {
@@ -61,10 +60,7 @@ impl ConverterApp {
 
             let btn_size = egui::vec2(300.0, 80.0);
             
-            // --- CORRECTION ICI ---
-            // Helper for card-like buttons
             let mut mk_card = |ui: &mut egui::Ui, title: &str, icon: &str, desc: &str, color: egui::Color32| -> bool {
-                // 1. On alloue l'espace et on demande la détection de clic sur tout le rectangle
                 let (rect, response) = ui.allocate_exact_size(btn_size, egui::Sense::click());
                 
                 let visuals = ui.style().interact(&response);
@@ -77,10 +73,7 @@ impl ConverterApp {
                 ui.painter().rect_filled(rect, 10.0, bg_color);
                 ui.painter().rect_stroke(rect, 10.0, visuals.bg_stroke);
 
-                 // Left-aligned content with icon
                  ui.allocate_ui_at_rect(rect, |ui| {
-                     // 2. CRITICAL FIX: On désactive la sélection de texte.
-                     // Cela permet aux clics de traverser le texte et d'atteindre le bouton (rect) en dessous.
                      ui.style_mut().interaction.selectable_labels = false;
 
                      ui.horizontal_centered(|ui| {
@@ -88,20 +81,18 @@ impl ConverterApp {
                          ui.label(egui::RichText::new(icon).size(30.0));
                          ui.add_space(20.0);
                          ui.vertical(|ui| {
-                             ui.add_space(18.0); // push text down a bit to center vertically manually
+                             ui.add_space(18.0);
                              ui.label(egui::RichText::new(title).size(18.0).strong());
                              ui.label(egui::RichText::new(desc).size(12.0).color(egui::Color32::GRAY));
                          });
                      });
                  });
 
-                // On retourne le clic détecté sur le rectangle global
                 response.on_hover_text(desc).clicked()
             };
 
             ui.add_space(20.0);
             
-            // Single column vertical layout
             ui.vertical_centered(|ui| {
                 if mk_card(ui, "IMAGES", "🖼", "Convert JPG, PNG, WEBP...", egui::Color32::from_rgb(255, 100, 100)) {
                     self.to_state(AppState::Images, "jpg");
