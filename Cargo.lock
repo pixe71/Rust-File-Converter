@@ -1326,6 +1326,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "file_converter"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "eframe",
+ "image",
+ "open",
+ "rfd",
+ "walkdir",
+]
+
+[[package]]
 name = "find-msvc-tools"
 version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3643,18 +3655,6 @@ name = "unicode-xid"
 version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
-
-[[package]]
-name = "universal_converter"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "eframe",
- "image",
- "open",
- "rfd",
- "walkdir",
-]
 
 [[package]]
 name = "url"
