@@ -1,0 +1,18 @@
+[package]
+name = "universal_converter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.29"
+image = "0.25"
+rfd = "0.15"
+open = "5.3"
+walkdir = "2.5" 
+anyhow = "1.0"
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true
+codegen-units = 1
