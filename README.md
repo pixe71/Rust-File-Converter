@@ -5,7 +5,7 @@ A fast, secure, and universal file converter, built with **Rust** featuring a mo
 ![Rust](https://img.shields.io/badge/Made_with-Rust-orange?style=for-the-badge&logo=rust)
 ![GUI](https://img.shields.io/badge/GUI-egui-blue?style=for-the-badge)
 
-![Screenshot](screen.png)
+<img src="screen.png" width="300px" alt="screen">
 
 ## Features
 
