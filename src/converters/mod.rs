@@ -1,6 +1,7 @@
 pub mod image_conv;
 pub mod audio_conv;
 pub mod video_conv;
+pub mod doc_conv;
 
 use std::path::PathBuf;
 

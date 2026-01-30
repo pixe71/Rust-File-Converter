@@ -269,6 +269,7 @@ impl ConverterApp {
                     "images" => converters::image_conv::convert_image(&file, &output_folder, &options),
                     "audio" => converters::audio_conv::convert_audio(&file, &output_folder, &options),
                     "video" => converters::video_conv::convert_video(&file, &output_folder, &options),
+                    "docs" => converters::doc_conv::convert_doc(&file, &output_folder, &options),
                     _ => Ok(PathBuf::new()),
                 };
 
