@@ -1,48 +1,38 @@
-use std::path::PathBuf;
+use super::{process, ConversionOptions};
+use crate::tools::{Tool, ToolResolver};
+use anyhow::Result;
+use std::path::Path;
 use std::process::Command;
-use anyhow::{Result, bail, Context};
-use super::ConversionOptions;
 
-pub fn is_ffmpeg_available() -> bool {
-    Command::new("ffmpeg")
-        .arg("-version")
-        .output()
-        .map(|o| o.status.success())
-        .unwrap_or(false)
-}
-
-pub fn convert_video(input_path: &PathBuf, output_folder: &PathBuf, options: &ConversionOptions) -> Result<PathBuf> {
-    if !is_ffmpeg_available() {
-        bail!("FFmpeg not found. Please install FFmpeg and add it to your PATH.");
+pub(super) fn convert_video(
+    input: &Path,
+    output: &Path,
+    options: &ConversionOptions,
+) -> Result<()> {
+    let ffmpeg = ToolResolver::from_environment()?.resolve(Tool::Ffmpeg)?;
+    let mut command = Command::new(&ffmpeg.path);
+    command
+        .args(["-nostdin", "-hide_banner", "-loglevel", "warning", "-y"])
+        .arg("-i")
+        .arg(input);
+    if options.width.is_some() || options.height.is_some() {
+        let width = options
+            .width
+            .map_or_else(|| "-2".into(), |value| value.to_string());
+        let height = options
+            .height
+            .map_or_else(|| "-2".into(), |value| value.to_string());
+        command.arg("-vf").arg(format!("scale={width}:{height}"));
     }
-
-    let file_stem = input_path.file_stem().unwrap_or_default();
-    let mut output_filename = PathBuf::from(file_stem);
-    output_filename.set_extension(&options.format);
-    let output_path = output_folder.join(output_filename);
-
-    let mut cmd = Command::new("ffmpeg");
-    cmd.arg("-y")
-       .arg("-i").arg(input_path);
-    
-    if let (Some(w), Some(h)) = (options.width, options.height) {
-        cmd.arg("-vf").arg(format!("scale={}:{}", w, h));
-    }
-
-    if options.codec != "copy" {
-         cmd.arg("-c:v").arg(&options.codec);
-    } else {
-        cmd.arg("-c:v").arg("copy");
-    }
-
-    cmd.arg(&output_path);
-
-    let output = cmd.output().context("Failed to execute ffmpeg")?;
-
-    if !output.status.success() {
-        let stderr = String::from_utf8_lossy(&output.stderr);
-        bail!("FFmpeg error: {}", stderr);
-    }
-
-    Ok(output_path)
+    command.arg("-c:v").arg(&options.codec).arg(output);
+    process::run_with_details(
+        &mut command,
+        "FFmpeg",
+        &format!(
+            "FFmpeg executable: {}\nRequested output: {}; video codec: {}",
+            ffmpeg.path.display(),
+            options.format,
+            options.codec
+        ),
+    )
 }
