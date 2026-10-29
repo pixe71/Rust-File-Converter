@@ -1,0 +1,44 @@
+Typst 0.15.1 - Rust File Converter Windows x64 supplied build
+
+Official tag: v0.15.1
+Official commit: 9dfd3a08500b7896045f907433cf7b4b02434fad
+Source: https://github.com/typst/typst/tree/9dfd3a08500b7896045f907433cf7b4b02434fad
+Source archive SHA-256: d2f5ae152f58bf7dd5a1e55a2ea4a49ad419f67c3540492fd4b7fef3cfc4d5cb
+Official Cargo.lock SHA-256: 1871fbb92921eda5b7d36f60b8e3554bfa1b0e9d5d284bc98809d45a41aac48c
+No source changes or dependency updates. Upstream default features; self-update disabled.
+
+Build date: 2026-10-29 (UTC)
+Rust: rustc 1.93.0 (254b59607 2026-01-19), LLVM 21.1.8
+Host/target: x86_64-pc-windows-msvc
+MSVC tools: 14.44.35207; cl 19.44.35229; linker 14.44.35229.0
+Windows SDK: 10.0.26100.0
+RUSTFLAGS=-C target-feature=+crt-static
+TYPST_VERSION=0.15.1
+TYPST_COMMIT_SHA=9dfd3a08500b7896045f907433cf7b4b02434fad
+cargo build --release --locked --target x86_64-pc-windows-msvc --package typst-cli --bin typst --jobs 2
+
+Rebuild: py -3 scripts/build_typst_windows.py
+Requires Windows x64, pinned MSVC Rust with rust-docs, MSVC C++ Build Tools and SDK.
+No global environment, PATH or installed Windows runtime is modified.
+The source tag, archive and Cargo.lock are verified by the build helper.
+Same sources/flags are reproducible; byte-identical output across SDK/linker
+versions is not promised. Packaging accepts only the explicitly approved hash.
+
+typst.exe size: 52603392 bytes
+typst.exe SHA-256: c5c90354ff5ac8f213be9ffe95ef534f97e8c34796c48f8f3e6ffebb9698878f
+Version output: typst 0.15.1 (9dfd3a08)
+Normal imports: api-ms-win-core-synch-l1-2-0.dll, bcryptprimitives.dll,
+crypt32.dll, kernel32.dll, ntdll.dll, ole32.dll, secur32.dll, shell32.dll, ws2_32.dll
+Delay imports: none. Independent checks: dumpbin /DEPENDENTS and windows_pe.py.
+Debug-event DLL tracing of --version and PDF compilation found no VC++/MinGW runtime.
+
+Original Apache-2.0 LICENSE and NOTICE are retained unchanged. DEPENDENCIES.json
+indexes original texts from 335 locked normal/build dependency packages.
+assets/NOTICE includes all original font/data notices. ASSETS-STATIC.json records
+34 unmodified embedded font/ICC byte sequences in this executable.
+sources/NewComputerModern/ includes the preferred SFD source of NewCM10-Regular,
+its original README/build instructions and License.txt. Its official OTF is
+byte-identical to the asset locked by Typst 0.15.1; fonts were not changed.
+sources/ includes exact option-ext (MPL-2.0) and glidesort source crates.
+rust-runtime/ retains the pinned Rust standard-library copyright/license texts.
+These records describe technical provenance and notices, not legal advice.

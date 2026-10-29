@@ -1,0 +1,41 @@
+name: Build standalone Typst (review artifact only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.93.0
+        with:
+          components: rust-docs
+          targets: x86_64-pc-windows-msvc
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify official sources and build static CRT
+        run: python scripts/build_typst_windows.py
+      - name: Inspect normal and delay imports
+        run: python scripts/windows_pe.py .cache/typst-static/typst.exe
+      - name: Check actual DLL loads and compile PDF
+        shell: pwsh
+        run: |
+          python scripts/trace_windows_dlls.py .cache/typst-static/typst.exe --version
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Set-Content -LiteralPath .cache/typst-static/probe.typ -Value 'Standalone Typst test' -Encoding utf8
+          python scripts/trace_windows_dlls.py .cache/typst-static/typst.exe compile --ignore-system-fonts .cache/typst-static/probe.typ .cache/typst-static/probe.pdf
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-FileHash -Algorithm SHA256 .cache/typst-static/typst.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: typst-0.15.1-static-crt-review
+          path: |
+            .cache/typst-static/typst.exe
+            .cache/typst-static/build-metadata.json
+            .cache/typst-static/notices/
+          include-hidden-files: true

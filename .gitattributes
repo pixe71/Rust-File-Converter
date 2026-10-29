@@ -1,0 +1,5 @@
+# Preserve official third-party notice bytes; hashes refer to upstream originals.
+licenses/**/original/** -text
+licenses/Typst/assets/** -text
+licenses/Typst/BUILD.txt text eol=lf
+licenses/**/upstream-references/** -text

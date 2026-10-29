@@ -1,1 +1,7 @@
 /target
+/File_Converter_V*.exe
+/tools/*
+/.cache/
+/dist/
+/packaging/compliance/
+**/__pycache__/

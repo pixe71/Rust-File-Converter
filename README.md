@@ -1,86 +1,98 @@
-# <img src="icon.png" align="" width="25px" alt="icon"> Rust File Converter
+# <img src="icon.png" width="25px" alt="Rust File Converter icon"> Rust File Converter
 
-A fast, secure, and universal file converter, built with **Rust** featuring a modern graphical interface.
+A desktop file converter built with **Rust**, featuring a simple graphical interface for images, audio, video and documents.
 
 ![Rust](https://img.shields.io/badge/Made_with-Rust-orange?style=for-the-badge&logo=rust)
 ![GUI](https://img.shields.io/badge/GUI-egui-blue?style=for-the-badge)
 
-<img src="screen.png" width="300px" alt="screen">
+## Screenshot
+
+<img src="screen.png" width="300px" alt="Rust File Converter screenshot">
 
 ## Features
 
-Bulk file conversion via a simple drag-and-drop or file selection interface.
+- Convert multiple files using drag and drop or file selection.
+- Remove individual files and ignore duplicate selections.
+- Choose the destination folder before converting.
+- Keep original and existing files with automatic output renaming.
+- Follow progress and review results and errors for each file.
 
-### Images (Native - No dependencies)
-Image conversion.
-- **Supported formats:** `JPG`, `PNG`, `BMP`, `GIF`, `WEBP`, `ICO`
+### Images
 
-### Audio (Requires FFmpeg)
-Audio conversion with bitrate selection.
-- **Supported formats:** `MP3`, `WAV`, `OGG`, `FLAC`, `AAC`
+Native conversion without external engines.
 
-### Video (Requires FFmpeg)
+- **Inputs:** JPG/JPEG, PNG, BMP, GIF, WebP, ICO.
+- **Outputs:** JPG, PNG, BMP, GIF, WebP, ICO.
+
+### Audio
+
+Audio conversion with bitrate selection where applicable.
+
+- **Inputs:** MP3, WAV, OGG, FLAC, M4A, AAC.
+- **Outputs:** MP3, WAV, OGG, FLAC, AAC.
+
+### Video
+
 Video conversion with codec selection.
-- **Supported formats:** `MP4`, `MKV`, `AVI`, `MOV`
 
-### Documents (Requires Pandoc)
-Text document conversion.
-- **Supported formats:** `PDF`, `DOCX`, `TXT`
+- **Inputs:** MP4, MKV, AVI, MOV, WebM.
+- **Outputs:** MP4, MKV, AVI, MOV.
 
----
+### Documents
 
-## System Requirements
+- **Inputs:** DOCX, UTF-8 TXT.
+- **Outputs:** plain TXT, DOCX, PDF.
 
-For all features to work, you must install the following external tools on your system:
+PDF input is not supported. TXT input is interpreted as Markdown.
 
-1.  **FFmpeg** (For Audio & Video)
-    *   Download: [ffmpeg.org](https://ffmpeg.org/download.html)
-    *   *Important:* Make sure to add `ffmpeg` to your system PATH environment variable.
+## Official Windows release
 
-2.  **Pandoc** (For Documents)
-    *   Download: [pandoc.org](https://pandoc.org/installing.html)
+The official Windows release is ready to use without manually installing FFmpeg, Pandoc or a PDF engine.
 
-> **Note:** The image converter works natively without installing these tools.
+1. Download the Windows ZIP from [GitHub Releases](https://github.com/pixe71/Rust-File-Converter/releases).
+2. Extract it.
+3. Run `File_Converter_V1.1.0.exe`.
+4. On first launch, allow Rust File Converter to prepare its conversion engines.
 
----
+FFmpeg/FFprobe and Pandoc are downloaded and verified automatically when needed.
+Typst is bundled with the application for PDF generation.
 
-## Installation and Usage
+No administrator rights or PATH configuration are required.
+After the initial setup, the conversion engines remain available offline.
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/Rust-File-Converter.git
-    cd Rust-File-Converter
-    ```
+## Build from source
 
-2.  Run the application:
-    ```bash
-    cargo run --release
-    ```
+With Rust and the platform's build tools installed:
 
-3.  (Optional) Build an optimized executable:
-    ```bash
-    cargo build --release
-    ```
-    The executable will be located in `target/release/file_converter.exe`.
-
-Or
-
-Run:
 ```bash
-File_Converter_V1.0.0.exe
+git clone https://github.com/pixe71/Rust-File-Converter.git
+cd Rust-File-Converter
+cargo run --release --locked
 ```
 
----
+To build without launching:
+
+```bash
+cargo build --release --locked
+```
+
+The Windows executable is `target/release/file_converter.exe`.
+For development, engines can be found in PATH, supplied in `tools/` beside the
+executable, or configured with `RFC_TOOLS_DIR`.
 
 ## Technologies Used
 
-*   **Language:** [Rust](https://www.rust-lang.org/)
-*   **Interface (GUI):** [eframe / egui](https://github.com/emilk/egui)
-*   **Conversion Engines:**
-    *   `image` (Rust Crate)
-    *   `ffmpeg` (CLI Wrapper)
-    *   `pandoc` (CLI Wrapper)
+- **Language:** [Rust](https://www.rust-lang.org/)
+- **Interface:** [eframe / egui](https://github.com/emilk/egui)
+- **Images:** the Rust `image` crate
+- **Audio / video:** FFmpeg
+- **Documents / PDF:** Pandoc and Typst
+
+## Technical documentation
+
+For technical documentation, see [docs/](docs/).
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Rust File Converter is distributed under the [MIT License](LICENCE).
+Conversion engines retain their own licenses; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

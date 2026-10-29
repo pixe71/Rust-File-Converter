@@ -1,0 +1,215 @@
+{
+  "source_crate": "typst-assets 0.15.1",
+  "source_sha256": "bcee505dac6702dd1c5e65aa2e94a6179d19ee09e2e5637d7313db91765dc4e0",
+  "source_id": "ab9eed7b046c6a29f6cdb8566f4b44fb46a2f57f",
+  "executable_sha256": "081217a463adb006f8894b44227fe4b9c9e91fc85f5463d5948e8370db9bb31e",
+  "embedded_font_query": "typst.exe fonts --ignore-system-fonts --variants; PATH empty; custom font paths removed",
+  "embedded_font_output": "DejaVu Sans Mono\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 700, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Italic, Weight: 700, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Italic, Weight: 400, Stretch: 100%\n  \u2514 (Embedded)\n      Style: Normal, Weight: 400, Stretch: 100%\n\nLibertinus Serif\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 400, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 700, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Italic, Weight: 400, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Italic, Weight: 700, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 600, Stretch: 100%\n  \u2514 (Embedded)\n      Style: Italic, Weight: 600, Stretch: 100%\n\nNew Computer Modern\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 400, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 700, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Italic, Weight: 400, Stretch: 100%\n  \u2514 (Embedded)\n      Style: Italic, Weight: 700, Stretch: 100%\n\nNew Computer Modern Math\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 700, Stretch: 100%\n  \u251c (Embedded)\n  \u2502   Style: Normal, Weight: 450, Stretch: 100%\n  \u2514 (Embedded)\n      Style: Normal, Weight: 400, Stretch: 100%\n\n",
+  "asset_rows": [
+    {
+      "file": "typst-assets-0.15.1/files/fonts/DejaVuSansMono-Bold.ttf",
+      "size": 331992,
+      "sha256": "bce60f1b4421acd9ea51ba6623d7024ecbe6817a953e3654df62a5e6bdf8f769",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/DejaVuSansMono-BoldOblique.ttf",
+      "size": 253580,
+      "sha256": "91713a71d550bba22c2a6b2bb2a9ad8f9a159e12e4e9f0a5b2677998ba21213e",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/DejaVuSansMono-Oblique.ttf",
+      "size": 251932,
+      "sha256": "742097840c541870e8d6dc5c9b37bb1ceeea6c0dedd1d475faf903ef9df734b0",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/DejaVuSansMono.ttf",
+      "size": 340712,
+      "sha256": "b4a6c3e4faab8773f4ff761d56451646409f29abedd68f05d38c2df667d3c582",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitDingbats.pfb",
+      "size": 29513,
+      "sha256": "845c752392b6c914fb989c75a08b7792b88f542d2499042ef2889f8c814a16ed",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitFixed.pfb",
+      "size": 17597,
+      "sha256": "b6c8fe53f134b8b6d4578cd2d544df4cee9624c4efa8d51a560fb40ea296101b",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitFixedBold.pfb",
+      "size": 18055,
+      "sha256": "f1b7159702973f54fc86254ea38bcf3712b2a736eb3a0995751e9f4bb45ad603",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitFixedBoldItalic.pfb",
+      "size": 19151,
+      "sha256": "8a000945843bd31add06aee63bf9fd41b7578b4f3242a4b7cd46349ad9d24d4d",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitFixedItalic.pfb",
+      "size": 18746,
+      "sha256": "5007faf8320fa1fcc08b8894b356ad976f60b992ba29ee5272578bbdebaf3876",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSans.pfb",
+      "size": 15025,
+      "sha256": "a02339e95d20db14cbdfc1c6baf359cd36a091d5434925c3a4040f60e1a1af9e",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSansBold.pfb",
+      "size": 16344,
+      "sha256": "7bdfa36de1d5757dcfaf8b8a4be95c6e41c40fa70dbed9d78bf979a7b9959054",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSansBoldItalic.pfb",
+      "size": 16418,
+      "sha256": "555ce45924338e2e4b32821910221ce85da691fd59a9723c4c971a7c5627fc8b",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSansItalic.pfb",
+      "size": 16339,
+      "sha256": "7751cbefeda351708dae8c4a88db043411bc39ab2ae2097685da845d4d16f307",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSerif.pfb",
+      "size": 19469,
+      "sha256": "4f57d2b9d884af8f907bf22df6019b52d86cbf6214fdbd02b1ae05472a543f35",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSerifBold.pfb",
+      "size": 19395,
+      "sha256": "0bdf4b04e964139818d51eda03d566ba999fc3ba2421b1c6c51f9dc969022e80",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSerifBoldItalic.pfb",
+      "size": 20733,
+      "sha256": "a406cac82583bf98175cb62c87ed5e95c45fbb34eece63a10b0a13e793cb2e10",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSerifItalic.pfb",
+      "size": 21227,
+      "sha256": "610ae0687198045c4db5d1a6650fd5e92536631706382eb8b72e38df578d0ae9",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/FoxitSymbol.pfb",
+      "size": 16729,
+      "sha256": "47967d055530e7357088a08403115425643ec2cdfd6201ba8af0fbd7116c1539",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/LibertinusSerif-Bold.otf",
+      "size": 293908,
+      "sha256": "0264914210ed51b3231ebc92ce529e9f2e166ba9eebf0cd4a579558690a27b64",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/LibertinusSerif-BoldItalic.otf",
+      "size": 259176,
+      "sha256": "47a665259f09f554f5d133d7718cdad43ff462c6a6b2328f38023465e62d57ce",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/LibertinusSerif-Italic.otf",
+      "size": 332312,
+      "sha256": "9a393d63d6e05f620d3dc0190dfd35a8ede58c0808cf0fc9de7fcb9c723e4c24",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/LibertinusSerif-Regular.otf",
+      "size": 337132,
+      "sha256": "fcf06307a77367394fcb0ccb241e59eea70dba3d732be309647611224679c733",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/LibertinusSerif-Semibold.otf",
+      "size": 291640,
+      "sha256": "a4b3f28e85881db34695c1f005e4c79233a6caf3a2bd286c9b418c025fb99308",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/LibertinusSerif-SemiboldItalic.otf",
+      "size": 343148,
+      "sha256": "397f0d7aba35ae6a988948ae046c14c6b1e0d270fcc6e292b8bc29fd625c6101",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCM10-Bold.otf",
+      "size": 629288,
+      "sha256": "40b0b32b63655fe802679ee4a14adb29c762a4712095d9c84cf7df7852b5152e",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCM10-BoldItalic.otf",
+      "size": 609000,
+      "sha256": "fb53f43500c8ffbcc6dfdea5a519961d475543174ea2a0dcbe16c08510299fdf",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCM10-Italic.otf",
+      "size": 721176,
+      "sha256": "a55d07607eec48889b6e7e7d51d7703c3beb915a39690f34fe01b4e2a744a9d6",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCM10-Regular.otf",
+      "size": 717588,
+      "sha256": "328698d764ccdf7acf6bc1088aefd83a237f6a1d8b812de1e77ac5e4483bf3d1",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCMMath-Bold.otf",
+      "size": 1232148,
+      "sha256": "c6c0e060da57d4f44274705afb956013047231dc62be5a4b02a351ab0dc43f2f",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCMMath-Book.otf",
+      "size": 1432068,
+      "sha256": "2ea09ebc9167b1e1a66f31390dc917f2d4004ecfca72d51b28010e4ad6becd95",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/fonts/NewCMMath-Regular.otf",
+      "size": 1306268,
+      "sha256": "d66ac1cc91c55c24d3636ae2df1238076debdff51841f9893fc5419cc2df3df7",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/icc/CMYK-to-XYZ.icc",
+      "size": 8464,
+      "sha256": "73e1ba37d2bad5bab2a964f40a9eed96209666efc067c3322626214bbef234a0",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/icc/sGrey-v4.icc",
+      "size": 360,
+      "sha256": "00c0f94e09127520a17dc0e1d9264b5702081d96dbdb1549ee88e3631ce42a9d",
+      "exact_bytes_found_in_executable": true
+    },
+    {
+      "file": "typst-assets-0.15.1/files/icc/sRGB-v4.icc",
+      "size": 480,
+      "sha256": "c56e1685d888f5edb92fe07f2750f387f8fe8e91b32ff8fb0b56bfbbb9458353",
+      "exact_bytes_found_in_executable": true
+    }
+  ],
+  "scope_note": "All font/ICC files present in the locked crate are inventoried. Full raw-byte matches prove those bytes are present unmodified; absence is not proof an asset is unused. This does not resolve all source/exception or Rust dependency obligations."
+}
